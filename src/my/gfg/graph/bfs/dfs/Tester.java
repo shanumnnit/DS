@@ -19,7 +19,7 @@ public class Tester {
 		// System.out.print("BFS traversal : ");
 		// g.bfsTraversal(2);
 		System.out.print("DFS traversal : ");
-		g.bfsTraversal(3);
+		g.dfsTraversalRecursive(0);
 
 	}
 

@@ -53,11 +53,11 @@ public class Graph {
 		Arrays.fill(visisted, false);
 
 		stack.push(src);
+		visisted[src] = true;
 
 		while (!stack.isEmpty()) {
 			Integer popped = stack.pop();
 			System.out.print(popped + " ");
-			visisted[popped] = true;
 			for (Integer neighbour : adj[popped]) {
 				if (!visisted[neighbour]) {
 					visisted[neighbour] = true;
@@ -66,6 +66,25 @@ public class Graph {
 			}
 		}
 
+	}
+
+	public void dfsTraversalRecursive(int src) {
+		boolean[] visisted = new boolean[V];
+		Arrays.fill(visisted, false);
+
+		for (int i = 0; i < adj.length; i++)
+			if (!visisted[i])
+				dfsTraversalRecursiveUtil(src, visisted);
+	}
+
+	public void dfsTraversalRecursiveUtil(int src, boolean[] visisted) {
+		visisted[src] = true;
+		System.out.print(src + " ");
+		for (Integer neighbour : adj[src]) {
+			if (!visisted[neighbour]) {
+				dfsTraversalRecursiveUtil(neighbour, visisted);
+			}
+		}
 	}
 
 }
